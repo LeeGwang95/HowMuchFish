@@ -9,11 +9,11 @@ Youtube: https://www.youtube.com/watch?v=-EsIAYE_Xiw
 # HOW?
 데이터 수집에 있어서는 농수산물유통정보 기상청 합쳐서 데이터를 만듬 csv 파일로만들고
 이를 텐서플로우에서 넘파이를 사용하여 플레이스 홀더를 각각 설정. 선형회귀를 사용했는데
-경사하강법으로 이를 예측  hypothesis = tf.matmul(X,W) +b
-Cost = tf.reduce_mean(tf.square(hypothesis - Y)
-평균제곱 오차법 
-optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.000005)
-* 선형 회귀란? 독립 변수 x를 사용해 종속 변수 y의 움직임을  예측 하는 방식
+경사하강법으로 이를 예측 하였습니다. 
+- hypothesis = tf.matmul(X,W) +b
+- Cost = tf.reduce_mean(tf.square(hypothesis - Y)
+- 평균제곱 오차법 optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.000005)
+- 선형 회귀란? 독립 변수 x를 사용해 종속 변수 y의 움직임을  예측 하는 방식
 1. Initial Screen
 - Flask Web + BootStrap Template을 활용하여 Video 클립을 활용한 빠른 웹 디자인 개발
 <img width="1678" alt="스크린샷 2020-03-23 오후 4 36 30" src="https://user-images.githubusercontent.com/62536330/77292895-8d97af80-6d24-11ea-9e5f-7d53721744fc.png">
