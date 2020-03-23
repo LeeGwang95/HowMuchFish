@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>How Much Fish?</title>
+
+  <!-- Font Awesome -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+
+  <!-- Material Design Bootstrap -->
+
+    <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
+
+
+
+  <!-- Your custom styles (optional) -->
+
+    <link href="{{url_for('static', filename='css/style.min.css')}}" rel="stylesheet">
+
+
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 100%;
+    }
+    .nav-flex-icons{
+      padding-left: 30px;
+     }
+    #currentTime {
+      color : white;
+     }
+    @media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #1C2331!important;
+            }
+        }
+
+    .prologue{
+        width:100%;
+        text-align: center;
+        background-color: black;
+        color: white;
+        padding: 20px;
+     }
+    .prologue_contents{
+        display: inline-block;
+        width:50%;
+        height:100px;
+    }
+    .prologue2{
+        width:100%;
+        text-align: center;
+        background-color:  #FFD700;
+        text-decoration-color: black;
+        padding: 20px;
+    }
+     .prologue3{
+        width:100%;
+        text-align: center;
+        background-color:  white;
+        text-decoration-color: black;
+        padding: 20px;
+    }
+    @import url('https://fonts.googleapis.com/css?family=Noto+Serif|Playfair+Display|Roboto:300,400,700');
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* reset.css by hyejin */
+*, *:before, *:after { box-sizing: border-box; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,p,button,table,th,td,input {margin:0;padding:0;}
+input, fieldset, img, iframe {border:0;}
+ul,ol {list-style-type:none;}
+a {color:inherit;text-decoration:none;outline: none;cursor:pointer; }
+a:hover, a:focus {color:inherit;text-decoration:none;}
+.hidden {display:none !important;}
+button {border:none;background:none;cursor:pointer;outline:none;}
+button:disabled, button:disabled:hover {cursor: default;}
+
+/* style */
+
+h1 { color: #fff; }
+ul { overflow: hidden; }
+li { float: left; margin: 10px; width: calc(25% - 20px); background: #fff; text-align: center; }
+ 
+li:nth-child(2) .album-cover {
+  background-image: url('http://news.kotra.or.kr/crosseditor/binary/images/000569/20180219134018344_O8ZRD413.png');
+}
+li:nth-child(3) .album-cover {
+  background-image: url('https://file2.nocutnews.co.kr/newsroom/image/2019/05/15/20190515095155262061_6_710_473.jpg');
+}
+li:nth-child(4) .album-cover {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_iXl25TDDEBj1gy9iCRla3mCmvH66GsKwKzx9JBdccQZAot4Hga3aVoOrGQi8HIayTZU52Lc');
+}
+
+.album-cover {
+  width: 100%;
+  height: 260px;
+  background-image: url('https://pds.joins.com/news/component/newsis/201804/06/NISI20180212_0013802279_web.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.album-info {
+  padding: 10px;
+}
+
+.album-title {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.album-date {
+  font-size: 12px;
+}
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+
+    <div class="container">
+
+      <a class="navbar-brand" href="#">
+
+        <strong>How Much Fish?</strong>
+
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+
+        aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+<!--
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+
+            <a class="nav-link" href="#">HOME
+
+              <span class="sr-only">(current)</span>
+
+            </a>
+
+          </li>
+-->
+        </ul>
+
+
+        <a href="#">
+
+          <span id="currentTime" style="color:white"></span>
+
+        </a>
+
+
+
+        <ul class="navbar-nav nav-flex-icons">
+
+       
+
+            <a href="https://github.com/goodzlmn/TeamProject2" class="nav-link border border-light rounded" target="_blank">
+
+              <i class="fa fa-github mr-2"></i>GITHUB
+
+            </a>
+
+         
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <ol class="carousel-indicators">
+
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+
+      <div class="carousel-item active">
+
+        <div class="view">
+
+          <video class="video-intro" autoplay loop>
+
+             <!--source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4"-->
+              <source src="{{ url_for('static', filename='img/hey.mp4') }}" type="video/mp4">
+
+          </video>
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+
+              <h1 class="mb-4">
+
+                <strong>수산물 가격 예측 모델</strong>
+
+              </h1>
+                 <div class="parallax-box">
+            <div class="container">
+               <div class="text align-center">
+                  <h1>추후 가격을 예측하고 싶으십니까?</h1>
+                  <!-- <p>navigare necesse est, vivere non est necesse</p> -->
+
+                  <!-- <a href="#" class="btn btn-special no-icon size-2x">수산물 검색</a> -->
+
+               </div>
+            </div>
+         </div>
+
+
+
+<!--
+<form class="destinations-form">
+                     <div class="input-line">
+                        <input type="text" name="destination" value="" class="form-input check-value" placeholder="어떤 수산물을 찾으세요?" />
+                        <button type="button" name="destination-submit" class="form-submit btn btn-special">검색</button>
+                     </div>
+                  </form>
+-->
+              <p></p>
+              <p>
+
+                <strong>빠르고 정확하게 향후 수산물 가격을 예측합니다.</strong>
+
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+
+                <strong>기상청 전국 기온 및 강수량 데이터와 전국 월별 수산물 가격 빅 데이터를 분석하여 시계열 수치 예측을 수행합니다</strong>
+
+              </p>
+
+              <!-- <a target="_blank" href="#" class="btn btn-outline-white btn-lg">START -->
+                <a href="#target" class="go_btn btn btn-outline-white btn-lg">수산물 가격 예측하기</a>
+
+              <!-- <i class="fa fa-graduation-cap ml-2"></i> -->
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="carousel-item">
+
+        <div class="view">
+
+          <video muted class="video-intro" autoplay>
+
+              <source src="{{ url_for('static', filename='img/aqua.mp4') }}" type="video/mp4">
+
+          </video>
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+
+              <h1 class="mb-4">
+
+                <strong>수산물 가격 예측  로봇</strong>
+
+              </h1>
+
+              <p>
+
+                <strong>빠르고 정확하게 향후 수산물 가격을 예측합니다.</strong>
+
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+
+                <strong>기상청 전국 기온 및 강수량 데이터와 전국 월별 수산물 가격 빅 데이터를 분석하여 시계열 수치 예측을 수행합니다</strong>
+
+              </p>
+
+              <!-- <a target="_blank" href="#" class="btn btn-outline-white btn-lg">START -->
+                <a href="#target" class="go_btn btn btn-outline-white btn-lg">수산물 가격 예측하기</a>
+
+              <!--  <i class="fa fa-graduation-cap ml-2"></i> -->
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="carousel-item">
+
+        <div class="view">
+
+          <video class="video-intro" autoplay loop>
+
+              <!--<source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4">-->
+             <source src="{{ url_for('static', filename='img/Go.mp4') }}" type="video/mp4">
+          </video>
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+
+              <h1 class="mb-4">
+
+                <strong>수산물 가격 예측 AI 로봇</strong>
+
+              </h1>
+
+              <p>
+
+                <strong>빠르고 정확하게 향후 수산물 가격을 예측합니다.</strong>
+
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+
+                <strong>기상청 전국 기온 및 강수량 데이터와 전국 월별 수산물 가격 빅 데이터를 분석하여 시계열 수치 예측을 수행합니다</strong>
+
+              </p>
+
+              <!-- <a target="_blank" href="#" class="btn btn-outline-white btn-lg">START -->
+                <a href="#target" class="go_btn btn btn-outline-white btn-lg">수산물 가격 예측하기</a>
+
+              <!--  <i class="fa fa-graduation-cap ml-2"></i> -->
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+      <span class="sr-only">Previous</span>
+
+    </a>
+
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+      <span class="sr-only">Next</span>
+
+    </a>
+
+
+
+  </div>
+
+
+
+  <main>
+    <div class="prologue">
+                <div class="prologue_contents">
+                    <img src="{{ url_for('static', filename='img/page_title_image_01.png') }}" width="120"  height="27" alt="PROLOGUE" class="content-title-image">
+                    <br><br>
+                    <div class="content-text-wrap" style="font-weight:bold">
+                        ‘요동치는 수산물 가격 변화하는 시장 피해받는 소비자’
+                    </div>                    
+                    <div class="content-text-wrap-01 first-child">
+                       현재 대한민국은 수산물 소비량 1위 국가이며, 세계 평균의 약 3배에 달한다. 그러나 높은 소비량에도 불구하고 수산물에 관련된 정보나 자료는 농산물에 비해 현저히 적다는 문제점이 있습니다. <br>
+                        학계에서는 수산물과 IT기술의 접목이 필요하다는 의견만 있을 뿐 뚜렷한 목표를 제시하고 있진 않습니다.
+                    </div>
+                    <div class="text-hr-wrap"></div> 
+                    <div class="content-text-wrap-01">
+                        이에 저희 프로젝트는 수산물 가격을 미리 알아보고 가격의 갑작스러운 변화에 대처하며 가격안정성과 시장 예측성 부분에 있어서 효과를 낼 것으로 보입니다.<br>
+                       
+                    </div>
+                    <div class="text-hr-wrap"></div>
+                    <div class="content-text-wrap-01">
+                         현재 지자체, 도자체, 나아가 정부측면에 있어서 요동치는 수산물 가격에 대하여 여러 정책 및 사업을 실시 중이고 노력 중 입니다. <br>
+                        
+                        실제로 정부는 작년에 850억에 가까운 돈을 수산물 가겨 안정화를 위하여 투입을 하였습니다. <br>
+                        또한 다양한 공모전과 계획을 통하여 이에 관심을 가지는 것을 보고 있습니다.
+                    </div>
+                    <div class="text-hr-wrap"></div>
+                    <div class="content-text-wrap-01">
+                      위와 같은 이유로서 목적을 가지고 이번 프로젝트를 진행하였습니다.
+                    </div>
+                </div>
+            </div>
+
+<div class="prologue2">
+                <div class="prologue_contents">
+                    <div class="content-text-wrap" style="font-weight:bold">
+                        ‘개인을 넘어서 정부로 하여금 하나의 상황판을 제시’ <br><br>
+                    </div>                    
+                    <div class="content-text-wrap-01 first-child">
+                         선형회귀를 통한 가격예측 모델을 구축. 이에 선형회귀란 변수사이의 선형적인 관계를 모델링 한것으로서 직선을 구하는 분석법을 토대로 가격 예측모델을 구성하였습니다.<br>
+                         기온,강수량 등을 토대로 가격과 상관관계를 구하여 가격을 예측하는 모델을 형성하였습니다.<br>
+                    </div>
+                    <div class="content-text-wrap-01">
+                        더불어서 <br>
+                        이해하기 힘든 자료들을 시각적으로 나타내기 위하여 노력 하였고<br>
+                        빅데이터, 수산업, 인공지능 등의 첨단 기술을 융합해 좀 더 실현성 높은 기술로 발전시켰습니다. <br>
+                        수학적 모델과 수많은 실험을 통해 탄생한 프로젝트가 HOW MUCH FISH입니다. 
+                    </div>
+                    <div class="content-text-wrap-01">
+                        HOW MUCH FISH는 이러한 요동치는 시장에 하나의 플랫폼 제시를 목적으로 합니다. <br>
+                    </div>
+                    
+
+
+
+
+
+
+                </div>
+                
+
+
+                    
+
+
+
+
+
+                </div>
+              
+            </div>
+
+
+    <div class="container">
+
+      <section class="mt-5 wow fadeIn">
+
+        <div class="row">
+
+          <div class="col-md-6 mb-4">
+
+            
+            
+         <img src="{{ url_for('static', filename='img/Adata.png') }}" class="img-fluid z-depth-1-half" alt="">
+            <br>
+             <br>
+            
+               <img src="{{ url_for('static', filename='img/Pdata.png') }}" class="img-fluid z-depth-1-half" alt="">
+          </div>
+
+          <div class="col-md-6 mb-4">
+
+            <h3 class="h3 mb-3">수산물 가격 예측 결과</h3>
+
+            <p>머신 러닝 선형 회귀(Linear Regression) 모델을 확장하여 시계열에 따른 수산물 가격을 예측하고 학습 결과를 확인했습니다. 미래의 수산물 가격을 효과적으로 예측할 수 있습니다.</p>
+
+            <hr>
+
+            <p>2,900개 이상의 데이터를 활용하여 적은 오차율을 보이는 수산물 가격 예측 모델을 개발했습니다.
+
+            </p>
+
+            <a href="https://github.com/goodzlmn/TeamProject2/blob/master/team_2/team/price%20data.csv" class="btn btn-grey btn-md" target="_blank">Download
+
+              <i class="fa fa-download ml-1"></i>
+
+            </a>
+            <br><br><br><br><br><br><br>
+          <img src="{{ url_for('static', filename='img/data2.png') }}" class="img-fluid z-depth-1-half" alt="" width="500px">
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <hr class="my-5">
+
+
+
+      <section>
+        <div id="target"></div>
+        <h3 class="h3 text-center mb-5">수산물 가격 예측하기</h3>
+
+        <div class="row wow fadeIn">
+
+          <div class="col-lg-6 col-md-12 px-4">
+
+            <form action="/" method="post">
+
+              <div class="form-group">
+
+                <label for="formGroupExampleInput">평균 온도</label>
+
+                <input type="text" name="avg_temp" class="form-control" placeholder="평균 온도를 입력하세요.">
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="formGroupExampleInput">최소 온도</label>
+
+                <input type="text" name="min_temp" class="form-control" placeholder="최소 온도를 입력하세요.">
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="formGroupExampleInput">최대 온도</label>
+
+                <input type="text" name="max_temp" class="form-control" placeholder="최대 온도를 입력하세요.">
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="formGroupExampleInput">강수량</label>
+
+                <input type="text" name="rain_fall" class="form-control" placeholder="강수량을 입력하세요.">
+                <div style="color: #C0C0C0;">비가 안오면 0 적당히오면 10 많이오면 30 정도를 기입해주세요</div>
+
+              </div>
+
+             <button type= "submit" class="btn btn-primary btn-md pull-right">예측하기</button>
+
+            </form>
+
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+
+            {% if price %}
+
+              <h5 class="text-center mt-3" > 결과는  {{price }} 원 입니다.</h5>
+              <style>
+                div { text-align: center; style="color: black;"}
+              </style>
+             <div>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBckbNBZdgtxglNCoeHhI9WlzEhRpCMh5zkniEolGUJoyb4BaCMA" alt="..." width="500" height="250" class="img-responsive img-rounded"  style=" border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px;-webkit-border-radius: 7px;" > </div>
+
+            {% endif %}
+
+          </div>
+
+        </div>
+
+
+      </section>
+<hr size = "5">
+<div class="prologue3">
+                <div class="prologue_contents">
+                    <div class="content-text-wrap" style="font-weight:bold">
+                        ‘수산업과 4차산업혁명의 동향 뉴스’ <br><br>
+                    </div>                    
+                    <div class="content-text-wrap-01 first-child">
+                         네이버 뉴스 검색API를 사용하였습니다. '수산물'이라는 키워드로 얻은 결과를 JSON파일로 만들어서 다음과 같이 주요 뉴스를 선정 하였습니다.<br>
+                         고령화와 여러 요소로 인한 수산업을 4차산업혁명과 결합하여 해결해 나가는 내용 및 정부의 관심을 다룬 뉴스입니다.
+                    </div>
+               
+                    <a href="https://github.com/goodzlmn/TeamProject2/blob/master/team5/rescode2.json" class="btn btn-grey btn-md" target="_blank">Download
+
+              <i class="fa fa-download ml-1"></i>
+
+            </a>
+                </div>
+                </div>
+
+
+
+
+<h1>카드형 리스트</h1>
+<ul>
+  <li>
+    <div class="album-item">
+      <div class="album-cover"></div>
+      <div class="album-info">
+        <p class="album-title">정부의 수산물 가격 안정 정책</p>
+        <p class="album-date">2017.02.16.</p>
+        <h3><a href = "https://news.joins.com/article/22513356" class="btn btn-grey btn-md"
+
+              target="_blank">read more</a></h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="album-item">
+      <div class="album-cover"></div>
+      <div class="album-info">
+        <p class="album-title">일본의 수산물 IT 정책</p>
+        <p class="album-date">2018.02.19.</p>
+          <h3><a href = "https://news.kotra.or.kr/user/globalAllBbs/kotranews/album/2/globalBbsDataAllView.do?dataIdx=164855&searchNationCd=101003" class="btn btn-grey btn-md"
+
+              target="_blank">read more</a></h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="album-item">
+      <div class="album-cover"></div>
+      <div class="album-info">
+        <p class="album-title">정부의 수산물 </p>
+        <p class="album-date">2019.05.14.</p>
+        <h3><a href = "https://www.nocutnews.co.kr/news/5150873" class="btn btn-grey btn-md"
+
+              target="_blank">read more</a></h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="album-item">
+      <div class="album-cover"></div>
+      <div class="album-info">
+        <p class="album-title">해양수산업과 4차산업혁명의 결합</p>
+        <p class="album-date">2019.06.07.</p>
+         <h3><a href = "https://www.asiae.co.kr/article/2019060714591178109" class="btn btn-grey btn-md"
+
+              target="_blank">read more</a></h3>
+      </div>
+    </div>
+  </li>
+</ul>
+  
+
+  </main>
+
+
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+    <div class="footer-copyright py-3">
+
+      © 2019 Copyright:
+
+      <a href="#" target="_blank"> 팀프로젝트2 </a>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- SCRIPTS -->
+
+  <!-- JQuery -->
+
+  <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+
+
+  <!-- Bootstrap tooltips -->
+
+  <script type="text/javascript" src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+
+  <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+
+
+  <!-- MDB core JavaScript -->
+
+  <script type="text/javascript" src="{{url_for('static', filename='js/mdb.min.js')}}"></script>
+
+
+
+  <!-- Initializations -->
+
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
+
+  <script>
+  var timer = setInterval(currentTime, 1000);
+  function currentTime() {
+    var d = new Date();
+    var t = "현재시간 : ";
+    document.getElementById("currentTime").innerHTML = t+d.toLocaleTimeString();
+  }
+  </script>
+
+  <script>
+    $(document).ready(function() {
+     $(".go_btn").click(function(event){
+        event.preventDefault();
+       $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+      });
+    });
+  </script>
+
+</body>
+<!-- contact section begins>
+<Section class = "section-padding" id = "contact">
+  <div class ="container">
+    <div class = "contact-sec text-center">
+      <p></p> <p></p> <p></p> <p></p> <p></p>
+      <h2> 감사합니다. <span class = "decorate" >개선 사항</span>을 말씀해주세요</h2>
+      <p>2019년 팀프로젝트 2 프로젝트입니다.</p>
+
+    </div>
+    <div class = "container">
+      <form class = "contactForm" method ="post" role ="form"> 
+        <div class = "form-group">
+        <input type = "text" name = "name" class = "form-control" placeholder="name" data-rule = "minlen:4"> 
+      </div>
+        <div class = "form-group">
+        <input type = "email" name = "email" class = "form-control" placeholder="email" data-rule = "email"> 
+      </div>
+        <div class = "form-group">
+        <input type = "text" name = "Subject" class = "form-control" placeholder="Subject" data-rule = "minlen:4"> 
+      </div>
+       <div class = "form-group">
+        <textarea type = "text" name = "message" class = "form-control" placeholder="Please write something for us" data-rule = "required" rows = "5"> </textarea>
+
+      </div>
+      <div class = "text-center">
+        <button class ="btn btn -btn-primary btn-lg" type = "submit" ></button>
+
+      </div>
+      </form>
+      
+
+    </div>
+
+  </div>
+
+  </Section>
+  <contact ends-->
+
+<form class="text-center border border-light p-5" action="/email/" method="post">
+
+    <p class="h4 mb-4">Contact us</p>
+
+    <!-- Name -->
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Title" name="email_title">
+
+    <!--
+    Email
+    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail" name="email_sender">
+    -->
+    <!--
+    Subject
+    <label>Subject</label>
+    <select class="browser-default custom-select mb-4">
+        <option value="" disabled>Choose option</option>
+        <option value="1" selected>Feedback</option>
+        <option value="2">Report a bug</option>
+        <option value="3">Feature request</option>
+        <option value="4">Feature request</option>
+    </select>
+    -->
+
+    <!-- Message -->
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message" name="email_content"></textarea>
+    </div>
+
+    <!--
+    Copy
+    <div class="custom-control custom-checkbox mb-4">
+        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+    </div>
+     -->
+    <!-- 익명 -->
+     <div class="custom-control custom-checkbox mb-4"><input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+        <h4>익명으로 메일을 보냅니다.</h4>
+    </div>
+    <!-- Send button -->
+    <button class="btn btn-info btn-block" type="submit">Send</button>
+
+</form>
+<!-- Default form contact -->
+</html>
